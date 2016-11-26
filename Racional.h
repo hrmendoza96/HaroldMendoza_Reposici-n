@@ -12,10 +12,13 @@ class Racional{
 
   public:
     Racional();
+    Racional(int,int);
+    void ImprimirFracciones();
+    ~Racional();
 
 
 
-    string toString();
+
 
 
 
