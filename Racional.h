@@ -18,14 +18,14 @@ class Racional{
     int getDenominador();
     void setNumerador(int);
     void setDenominador(int);
-    Racional* operator+(Racional*);
-    Racional* operator-(Racional*);
-    Racional* operator*(Racional*);
-    Racional* operator/(Racional*);
-    friend Racional* operator+(int);
+    Racional* operator+(Racional&);
+    Racional* operator-(Racional&);
+    Racional* operator*(Racional&);
+    Racional* operator/(Racional&);
+    Racional* operator+(int);
 
     Racional simplificarFraccion(Racional*);
-    void ImprimirFracciones();
+    void ImprimirFracciones(Racional*);
 
 
 

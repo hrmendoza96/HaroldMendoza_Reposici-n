@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "Racional.h"
 
 using namespace std;
@@ -17,38 +18,38 @@ Racional::~Racional(){
   cout << "Destructor Racional" << endl;
 }
 
-Racional simplificarFraccion(Racional* racional){
-  int num=0, int den=0;
+Racional Racional::simplificarFraccion(Racional* racional){
+  int num=0; int den=0;
   num=racional->getNumerador();
   den=racional->getDenominador();
-  int divisor=0, int dividendo=0;
+  int divisor=0; int dividendo=0;
+  
 
 
 
 
 }
-
-
-int getNumerador(){
+int Racional::getNumerador(){
   return numerador;
 }
-int getDenominador();{
+int Racional::getDenominador(){
   return denominador;
 }
-void setNumerador(int numerador){
+void Racional::setNumerador(int numerador){
   this->numerador=numerador;
 }
-void setDenominador(int denominador){
+void Racional::setDenominador(int denominador){
   this->denominador=denominador;
 }
 
+//==================SUMA========================
 Racional* Racional::operator+(Racional& der){
   if(this->getDenominador()==der.getDenominador()){
 
     Racional* respuesta;
 
-    respuesta.setNumerador(this->getNumerador() + der.getNumerador());
-    respuesta.setDenominador(this->getDenominador() + der.getDenominador());
+    respuesta->setNumerador(this->getNumerador() + der.getNumerador());
+    respuesta->setDenominador(this->getDenominador() + der.getDenominador());
 
     return respuesta;
 
@@ -64,8 +65,8 @@ Racional* Racional::operator+(Racional& der){
     //Sumar
     Racional* respuesta;
 
-    respuesta.setNumerador(this->getNumerador() + der.getNumerador());
-    respuesta.setDenominador(this->getDenominador() + der.getDenominador());
+    respuesta->setNumerador(this->getNumerador() + der.getNumerador());
+    respuesta->setDenominador(this->getDenominador() + der.getDenominador());
 
     return respuesta;
 
@@ -73,14 +74,14 @@ Racional* Racional::operator+(Racional& der){
   }
 
 }
-
-Racional* Racional::operator-(Racional*){
+//==================RESTA========================
+Racional* Racional::operator-(Racional& der){
   if(this->getDenominador()==der.getDenominador()){
 
     Racional* respuesta;
 
-    respuesta.setNumerador(this->getNumerador() - der.getNumerador());
-    respuesta.setDenominador(this->getDenominador() - der.getDenominador());
+    respuesta->setNumerador(this->getNumerador() - der.getNumerador());
+    respuesta->setDenominador(this->getDenominador() - der.getDenominador());
 
     return respuesta;
 
@@ -96,8 +97,8 @@ Racional* Racional::operator-(Racional*){
     //Sumar
     Racional* respuesta;
 
-    respuesta.setNumerador(this->getNumerador() - der.getNumerador());
-    respuesta.setDenominador(this->getDenominador() - der.getDenominador());
+    respuesta->setNumerador(this->getNumerador() - der.getNumerador());
+    respuesta->setDenominador(this->getDenominador() - der.getDenominador());
 
     return respuesta;
 
@@ -105,32 +106,41 @@ Racional* Racional::operator-(Racional*){
   }
 
 }
-Racional* Racional::operator*(Racional*){
+//==================MULT========================
+Racional* Racional::operator*(Racional& der){
   Racional* respuesta;
 
-  respuesta.setNumerador(this->getNumerador() * der.getNumerador());
-  respuesta.setDenominador(this->getDenominador() * der.getDenominador());
-
-  return respuesta;
-
-}
-Racional* Racional::operator/(Racional*){
-  Racional* respuesta;
-
-  respuesta.setNumerador(this->getNumerador() * der.getDenominador());
-  respuesta.setDenominador(this->getDenominador() * der.getNumerador());
+  respuesta->setNumerador(this->getNumerador() * der.getNumerador());
+  respuesta->setDenominador(this->getDenominador() * der.getDenominador());
 
   return respuesta;
 
 }
 
+//==================DIV========================
+Racional* Racional::operator/(Racional& der){
+  Racional* respuesta;
 
-Racional* Racional::operator+(int){
+  respuesta->setNumerador(this->getNumerador() * der.getDenominador());
+  respuesta->setDenominador(this->getDenominador() * der.getNumerador());
+
+  return respuesta;
+
+}
+
+//==================SUMA con Entero========================
+Racional* Racional::operator+(int entero){
   Racional* nuevo;
-  nuevo.setNumerador()
+  nuevo->setNumerador(entero*this->getDenominador());
+  nuevo->setDenominador(this->getDenominador());
+
+  Racional* respuesta;
+
+  respuesta->setNumerador(this->getNumerador() + nuevo->getNumerador());
+  respuesta->setDenominador(this->getDenominador() + nuevo->getDenominador());
 
 }
 
-void ImprimirFracciones(){
-  cout << "El Racional es: " << numerador << "/" << denominador << endl;
+void ImprimirFracciones(Racional* racional){
+  cout << "El Racional es: " << racional->getNumerador() << "/" << racional->getDenominador() << endl;
 }
