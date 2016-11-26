@@ -18,17 +18,27 @@ Racional::~Racional(){
   cout << "Destructor Racional" << endl;
 }
 
-Racional Racional::simplificarFraccion(Racional* racional){
-  int num=0; int den=0;
-  num=racional->getNumerador();
-  den=racional->getDenominador();
-  int divisor=0; int dividendo=0;
-  
+//================Algoritmo de Euclides para simplificar el racional ===========
+void Racional::simplificarFraccion(){
+  int num1=0; int num2=0;
+  num1=this->getNumerador();
+  num2=this->getDenominador();
+  while(num1!=num2){
+		if(num1>num2)
+		num1=num1-num2;
+		else
+	   num2=num2-num1;
 
+	}
+  int gcf = num1;
+	//cout<<"El GCF es:  "<< gcf <<endl;
 
+  this->setNumerador(this->getNumerador() / gcf );
+  this->setDenominador(this->getDenominador() / gcf );
 
 
 }
+//==============getters and setters
 int Racional::getNumerador(){
   return numerador;
 }
@@ -49,24 +59,31 @@ Racional* Racional::operator+(Racional& der){
     Racional* respuesta;
 
     respuesta->setNumerador(this->getNumerador() + der.getNumerador());
-    respuesta->setDenominador(this->getDenominador() + der.getDenominador());
+    respuesta->setDenominador(this->getDenominador());
 
     return respuesta;
 
   }else{
     int auxDen = der.getDenominador(); //guarda el valor del denominador del elemento de la derecha para usarlo despues y no perderlo
 
+   //cout << "auxDen: "<< auxDen<< endl;
+
     der.setNumerador(this->getDenominador()*der.getNumerador());
+
+   //cout << "Der Num: " << der.getNumerador()<< endl;
     der.setDenominador(this->getDenominador()*der.getDenominador());
+  // cout << "Der Den: " << der.getDenominador()<<endl;
 
     this->setNumerador(this->getNumerador()*auxDen);
-    der.setDenominador(this->getNumerador()*auxDen);
+    cout << "this Num: " <<this->getNumerador() << endl;
+    this->setDenominador(this->getDenominador()*auxDen);
+  //  cout << "this Den: "<<  this->getDenominador() << endl;
 
     //Sumar
     Racional* respuesta;
 
     respuesta->setNumerador(this->getNumerador() + der.getNumerador());
-    respuesta->setDenominador(this->getDenominador() + der.getDenominador());
+    respuesta->setDenominador(this->getDenominador());
 
     return respuesta;
 
@@ -81,7 +98,7 @@ Racional* Racional::operator-(Racional& der){
     Racional* respuesta;
 
     respuesta->setNumerador(this->getNumerador() - der.getNumerador());
-    respuesta->setDenominador(this->getDenominador() - der.getDenominador());
+    respuesta->setDenominador(this->getDenominador());
 
     return respuesta;
 
@@ -92,13 +109,13 @@ Racional* Racional::operator-(Racional& der){
     der.setDenominador(this->getDenominador()*der.getDenominador());
 
     this->setNumerador(this->getNumerador()*auxDen);
-    der.setDenominador(this->getNumerador()*auxDen);
+    this->setDenominador(this->getNumerador()*auxDen);
 
     //Sumar
     Racional* respuesta;
 
     respuesta->setNumerador(this->getNumerador() - der.getNumerador());
-    respuesta->setDenominador(this->getDenominador() - der.getDenominador());
+    respuesta->setDenominador(this->getDenominador());
 
     return respuesta;
 
@@ -120,9 +137,16 @@ Racional* Racional::operator*(Racional& der){
 //==================DIV========================
 Racional* Racional::operator/(Racional& der){
   Racional* respuesta;
+  int num1 = this->getNumerador();
+  int num2 = der.getNumerador();
+  int den1 = this->getDenominador();
+  int den2 = der.getDenominador();
 
-  respuesta->setNumerador(this->getNumerador() * der.getDenominador());
-  respuesta->setDenominador(this->getDenominador() * der.getNumerador());
+  respuesta->setNumerador((num1*den2));
+  cout << "resp Num: " << respuesta->getNumerador() << endl;
+  respuesta->setDenominador((num2*den1));
+  //cout << "this den: "<< this->getDenominador(); cout << " der num: " << der.getNumerador() << endl;
+  cout << "resp Den: " << respuesta->getDenominador() << endl;
 
   return respuesta;
 
@@ -137,10 +161,10 @@ Racional* Racional::operator+(int entero){
   Racional* respuesta;
 
   respuesta->setNumerador(this->getNumerador() + nuevo->getNumerador());
-  respuesta->setDenominador(this->getDenominador() + nuevo->getDenominador());
+  respuesta->setDenominador(this->getDenominador());
 
 }
 
-void ImprimirFracciones(Racional* racional){
-  cout << "El Racional es: " << racional->getNumerador() << "/" << racional->getDenominador() << endl;
+void Racional::ImprimirFracciones(){
+  cout << "El Racional es: " << this->numerador << "/" << this->denominador << endl;
 }

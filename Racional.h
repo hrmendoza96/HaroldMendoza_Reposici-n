@@ -24,8 +24,8 @@ class Racional{
     Racional* operator/(Racional&);
     Racional* operator+(int);
 
-    Racional simplificarFraccion(Racional*);
-    void ImprimirFracciones(Racional*);
+    void simplificarFraccion();
+    void ImprimirFracciones();
 
 
 
