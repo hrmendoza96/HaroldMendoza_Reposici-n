@@ -155,9 +155,13 @@ Racional* Racional::operator/(Racional& der){
 //==================SUMA con Entero========================
 Racional* Racional::operator+(int entero){
   Racional* nuevo;
-  nuevo->setNumerador(entero*this->getDenominador());
-  nuevo->setDenominador(this->getDenominador());
 
+
+  nuevo->setNumerador((entero*this->getDenominador()));
+  nuevo->setDenominador((this->getDenominador()*1));
+
+  cout << "den : "<< nuevo->getDenominador()<< endl;
+  cout << "num: " << nuevo->getNumerador() << endl;
   Racional* respuesta;
 
   respuesta->setNumerador(this->getNumerador() + nuevo->getNumerador());
